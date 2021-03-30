@@ -20,8 +20,9 @@ public class OrderService { // spring bean
 	
 	public String createOrder(@RequestBody Order order) {
 		//call getTaxes
-		Float response = getTaxesTemplate.getForObject("http//localhost:8080/getTaxes?price={price}",Float.class,order.getPrice());
-		System.out.println(response);
+		Float tax = getTaxesTemplate.getForObject("http//localhost:8080/getTaxes?price={price}",Float.class,order.getPrice());
+		System.out.println(tax);
+		order.setTax(tax);
 		Order savedOrder = orderRepository.save(order);
 		return savedOrder.getId();
 		

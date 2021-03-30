@@ -7,6 +7,8 @@ import org.springframework.data.annotation.Id;
 
 public class Order {
 	@NotNull
+	private float tax;
+	@NotNull
 	@NotBlank
 	private String item;
 	@NotNull
@@ -39,6 +41,14 @@ public class Order {
 
 	public void setItem(String item) {
 		this.item = item;
+	}
+
+	public float getTax() {
+		return tax;
+	}
+
+	public void setTax(float tax) {
+		this.tax = tax;
 	}
 
 }
